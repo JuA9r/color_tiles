@@ -116,7 +116,7 @@ class Score:
         self.score = 0
         self.image = self.font.render(f"Score: {self.score}", 0, self.color)
         self.rect = self.image.get_rect()
-        self.rect.center = 100, HEIGHT - 50
+        self.rect.center = 100, HEIGHT-50
 
     def score_count(self, add):
         self.score += add
@@ -128,7 +128,7 @@ class Score:
 
 def main():
     """
-    n = number of blocks :220
+    n = number of blocks : 220
     :while True:
     event.type処理: Processing by pressed key
     """
