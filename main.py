@@ -128,7 +128,7 @@ class Score:
 
 def main():
     """
-    n = number of blocks : 220
+    n = number of blocks :220
     :while True:
     event.type処理: Processing by pressed key
     """
