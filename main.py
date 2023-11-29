@@ -57,7 +57,6 @@ def mouse_click():
     mouse_pos = pg.mouse.get_pos()
     x_i = mouse_pos[0]//(rect_s+10)
     y_i = mouse_pos[1]//(rect_s+10)
-    # マウスインデックスを背景のrectサイズで割る
 
     try:
         if field[y_i][x_i] is not None:  # fieldに色のデータがあったら処理を行わない
