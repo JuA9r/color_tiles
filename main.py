@@ -4,7 +4,6 @@ import sys
 import random
 from time import sleep
 
-
 # ブロックサイズを20に指定
 # 6つの色をリストに格納
 rect_s = 20
@@ -16,6 +15,7 @@ field = [[None for j in range(field_s[0])] for i in range(field_s[1])]
 WIDTH = 600
 HEIGHT = 450
 title = "Start"
+
 n = 250  # ブロックの生成個数
 Time = 5  # タイマーの時間
 g_time = 90  # ゲームの制限時間
@@ -26,9 +26,9 @@ def gene_rand_rect():
     Generate blocks with random colors and coordinates
     """
     return [
-        random.randint(0, len(field[0])-1),
-        random.randint(0, len(field)-1),
-        colors[random.randint(0, len(colors)-1)]
+        random.randint(0, len(field[0]) - 1),
+        random.randint(0, len(field) - 1),
+        colors[random.randint(0, len(colors) - 1)]
     ]
     # リスト内にある色をランダムに取り出す
 
@@ -39,12 +39,11 @@ def draw_rect(screen, field, rect_s):
     """
     for y, field_row in enumerate(field):
         for x, data in enumerate(field_row):
-            if (x+y) % 2 == 0:
+            if (x+y)%2 == 0:
                 pg.draw.rect(
-                            screen, (245, 245, 245),
-                            (
-                                x*(rect_s+10), y*(rect_s+10),
-                                rect_s+10, rect_s+10
+                    screen, (245, 245, 245), (
+                        x*(rect_s+10), y*(rect_s+10),
+                        rect_s+10, rect_s+10
                             )
                         )
             if data is None:
@@ -53,8 +52,8 @@ def draw_rect(screen, field, rect_s):
                 screen, data[2], (
                     data[0]*(rect_s+10)+5, data[1]*(rect_s+10)+5,
                     rect_s, rect_s
-                                  )
-                         )
+                                )
+                        )
     pg.display.update()
 
 
@@ -63,7 +62,7 @@ def mouse_click():
     :return:
     Delete field block data on screen
     """
-    comp_c = []
+    comp_c = list()
     mouse_pos = pg.mouse.get_pos()
     x_i = mouse_pos[0]//(rect_s+10)
     y_i = mouse_pos[1]//(rect_s+10)
@@ -76,7 +75,7 @@ def mouse_click():
 
     for direct in [-1, 1]:
         try:
-            for x_d in range(0, direct * field_s[0], direct):
+            for x_d in range(0, direct*field_s[0], direct):
                 data = field[y_i][x_d+x_i]
                 if data is None:
                     continue
@@ -120,13 +119,14 @@ class Score:
     :score_count:
     Add score according to the number of disappeared blocks
     """
+
     def __init__(self):
         self.font = pg.font.Font(None, 50)
         self.color = (0, 0, 255)
         self.score = 0
         self.image = self.font.render(f"Score: {self.score}", 0, self.color)
         self.rect = self.image.get_rect()
-        self.rect.center = 100, HEIGHT-50
+        self.rect.center = 100, HEIGHT - 50
 
     def score_count(self, add):
         self.score += add
@@ -140,7 +140,7 @@ def main():
     """
     n = number of blocks : 220
     :while True:
-    event,type processing: Processing by pressed key
+    event.Type processing: Processing by pressed mouse
     """
     pg.init()
     screen = pg.display.set_mode((WIDTH, HEIGHT))
