@@ -3,7 +3,7 @@ __Execution environment__
 - Python >= 3.11
 - pygame >= 2.5.0
 
-_overview_
+__overview__
 - A game where you erase blocks
 
 __Code overview__
