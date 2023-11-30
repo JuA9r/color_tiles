@@ -8,4 +8,4 @@
 
 ## __Code overview__
 
-- _Basic function_
+_Basic function_
