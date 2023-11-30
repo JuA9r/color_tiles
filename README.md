@@ -1,5 +1,5 @@
 # color_tail
-- # __Execution environment__
+# __Execution environment__
 - Python >= 3.11
 - pygame >= 2.5.0
 
