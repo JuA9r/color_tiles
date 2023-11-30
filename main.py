@@ -23,35 +23,45 @@ g_time = 90  # ゲームの制限時間
 
 def gene_rand_rect():
     """
-    ランダムな色と座標にブロックを生成させる
+    Generate blocks with random colors and coordinates
     """
-    return [random.randint(0, len(field[0])-1),
-            random.randint(0, len(field)-1),
-            colors[random.randint(0, len(colors)-1)]]  # リスト内にある色をランダムに取り出す
+    return [
+        random.randint(0, len(field[0])-1),
+        random.randint(0, len(field)-1),
+        colors[random.randint(0, len(colors)-1)]
+    ]
+    # リスト内にある色をランダムに取り出す
 
 
 def draw_rect(screen, field, rect_s):
     """
-    ランダムな座標に背景ブロックを書き出す
+    Export background blocks at random coordinates
     """
     for y, field_row in enumerate(field):
         for x, data in enumerate(field_row):
             if (x+y) % 2 == 0:
                 pg.draw.rect(
                             screen, (245, 245, 245),
-                            (x*(rect_s+10), y*(rect_s+10), rect_s+10, rect_s+10)
+                            (
+                                x*(rect_s+10), y*(rect_s+10),
+                                rect_s+10, rect_s+10
                             )
+                        )
             if data is None:
                 continue
-            pg.draw.rect(screen, data[2], (data[0]*(rect_s+10)+5,
-                                           data[1]*(rect_s+10)+5, rect_s, rect_s))
+            pg.draw.rect(
+                screen, data[2], (
+                    data[0]*(rect_s+10)+5, data[1]*(rect_s+10)+5,
+                    rect_s, rect_s
+                                  )
+                         )
     pg.display.update()
 
 
 def mouse_click():
     """
     :return:
-    画面上のfieldのブロックデータを削除
+    Delete field block data on screen
     """
     comp_c = []
     mouse_pos = pg.mouse.get_pos()
@@ -67,7 +77,7 @@ def mouse_click():
     for direct in [-1, 1]:
         try:
             for x_d in range(0, direct * field_s[0], direct):
-                data = field[y_i][x_d + x_i]
+                data = field[y_i][x_d+x_i]
                 if data is None:
                     continue
                 comp_c.append(data[2])
@@ -76,8 +86,8 @@ def mouse_click():
             pass
 
         try:
-            for y_d in range(0, direct * field_s[1], direct):
-                data = field[y_d + y_i][x_i]
+            for y_d in range(0, direct*field_s[1], direct):
+                data = field[y_d+y_i][x_i]
                 if data is None:
                     continue
                 comp_c.append(data[2])
@@ -108,7 +118,7 @@ class Score:
     """
     Score calculation
     :score_count:
-    消えたブロックの数に応じてscoreを加算
+    Add score according to the number of disappeared blocks
     """
     def __init__(self):
         self.font = pg.font.Font(None, 50)
@@ -130,7 +140,7 @@ def main():
     """
     n = number of blocks : 220
     :while True:
-    event.type処理: Processing by pressed key
+    event,type processing: Processing by pressed key
     """
     pg.init()
     screen = pg.display.set_mode((WIDTH, HEIGHT))
