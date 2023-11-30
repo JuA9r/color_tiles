@@ -1,11 +1,11 @@
 # color_tail
-# __Execution environment__
+## __Execution environment__
 - Python >= 3.11
 - pygame >= 2.5.0
 
-# __overview__
+## __overview__
 - A game where you erase blocks
 
-# __Code overview__
+## __Code overview__
 
-_Basic function_
+- _Basic function_
