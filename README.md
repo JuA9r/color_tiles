@@ -3,7 +3,7 @@
 - Python >= 3.11
 - pygame >= 2.5.0
 
-## __overview__
+## __Overview__
 - A game where you erase blocks
 
 ## __Code overview__
