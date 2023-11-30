@@ -7,3 +7,5 @@ __overview__
 - A game where you erase blocks
 
 __Code overview__
+
+_Basic function_
